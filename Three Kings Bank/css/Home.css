@@ -1,0 +1,92 @@
+h1 {
+	font-family : Palatino;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+	border: 1px solid grey;
+	box-shadow: 4px 2px grey;
+}
+
+h1 {
+	font-family: Georgia, serif;
+}
+
+h3 {
+	font-family: Georgia, serif;
+}
+
+p {	
+    font-family: Georgia, serif;
+}
+
+li {
+    float: left;
+}
+
+#fr {
+	float:right
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(#active) {
+    background-color: #111;
+}
+
+#active {
+    background-color: #bcae14;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+  
+  body {
+  background: grey url("../images/Background.png") no-repeat right top;
+}
+
+.image2 {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+}
+
+#set {
+	background-color: white;
+    width: 90%;
+    border: 2px solid black;
+    margin: 50px;
+	padding: 20px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+#centertext{
+	text-align: center;
+}
+
+
+#fix {
+	text-align: center;
+	color : white;
+}
+
+#center{height:auto;width:300px;margin-left:100px;}
+label,input,button,select{display:block;margin-top:5px;margin-bottom:5px;}
+input,select,textarea{width:100%;}
+
+div#content p{line-height:1.4;text-align:justify;}
