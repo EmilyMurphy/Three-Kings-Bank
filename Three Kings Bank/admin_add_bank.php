@@ -1,5 +1,6 @@
 <?php
 	include "database.php";
+	include "function.php";
 	session_start();
 	if(!isset($_SESSION["AID"]))
 	{
@@ -10,11 +11,7 @@
 <!Doctype html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
 
-</script>
 <meta charset = "utf-8">
 <title> Home </title>
 <link rel="stylesheet" type="text/css" href="css/Home.css">
@@ -37,33 +34,37 @@
 <div id="set">
 
 <div id="content">
-      <h3 id="heading">Change Password</h3>
+      <h3 id="heading">Upload Bank Details.</h3>
 		<div id="center">
-	<?php
+		<?php
 	if(isset($_POST["submit"]))
 		{
-			$sql="SELECT * FROM admin WHERE APASS='{$_POST["opass"]}' and AID=".$_SESSION["AID"];
-			$res=$db->query($sql);
-			if($res->num_rows>0)
-			{
-				$s="update admin set APASS='{$_POST["npass"]}' WHERE AID=".$_SESSION["AID"];
-				$db->query($s);
-				echo "<p class='success'>Password Changed</p>";
-			}
-			else
-			{
-				echo "<p class='error'>Invalid Password</p>";
-			}
+			$bname=$_POST["bname"];
+			$addr=$_POST["addr"];
 
+            $sql="INSERT INTO bank(BNAME,ADDRESS)
+					 VALUES ('{$bname}','{$addr}')";
+        
+					if( $db->query($sql))
+                    {
+					   echo "<p class='success'>Adding Bank Success.</p>";
+
+                    }
+                    else
+                    {
+                        echo "<p class='success'>Adding Bank Failed.</p>";
+                    }
+	
 		}
-	?>
-		<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-			<label>Old Password</label>
-			<input type="password" name="opass" required>
-			<label>New Password</label>
-			<input type="password" name="npass" required>
-			<button type="submit" name="submit">Update Now</button>
-			</form>
+?>
+	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" >
+		<label>Bank Name</label>
+		<input type="text" name="bname" required>
+		<label>Location </label>
+		<textarea name="addr" required></textarea>
+		
+		<button type="submit" name="submit">Save Details</button>
+	  </form>
 		</div>
     </div>
 </div>
@@ -74,4 +75,3 @@
 <hr>
 </footer>
 </html>
-

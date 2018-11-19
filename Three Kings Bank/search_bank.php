@@ -22,14 +22,14 @@ if(!isset($_SESSION["ID"]))
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
 </head>
 <header>
-<a href="home.html">
+<a href="user_home.php">
 <img src = "images/logo.png" class="image2" width="10%" height="20%" align = left>
 </a>
 <img src = "images/TKB bg.png" width="100%" height="10%" alt="background"  >
 </header>
 <body>
 <ul>
-  <li><a id="active" href="index.php">Home</a></li>
+  <li><a id="active" href="user_home.php">Home</a></li>
   <li><a href="search_bank.php">Search Banks</a></li>
   <li><a href="logout.php">Logout</a></li>
   <li><a href="user_change.php">Change Password</a></li>

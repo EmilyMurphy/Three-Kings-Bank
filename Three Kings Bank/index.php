@@ -12,7 +12,7 @@
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
 </head>
 <header>
-<a href="home.html">
+<a href="index.php">
 <img src = "images/logo.png" class="image2" width="10%" height="20%" align = left>
 </a>
 <img src = "images/TKB bg.png" width="100%" height="10%" alt="background"  >
@@ -21,7 +21,7 @@
 <ul>
   <li><a id="active" href="index.php">Home</a></li>
   <li><a href="admin_login.php">Admin Login</a></li>
-  <li><a href="user_login.php">User Login</a></li>T
+  <li><a href="user_login.php">User Login</a></li>
   <li><a href="reg.php">User Registration</a></li>
 </ul>
 <div id="set">

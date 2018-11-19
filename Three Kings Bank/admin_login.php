@@ -17,7 +17,7 @@
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
 </head>
 <header>
-<a href="home.html">
+<a href="index.php">
 <img src = "images/logo.png" class="image2" width="10%" height="20%" align = left>
 </a>
 <img src = "images/TKB bg.png" width="100%" height="10%" alt="background"  >
