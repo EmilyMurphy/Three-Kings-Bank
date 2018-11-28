@@ -1,4 +1,4 @@
-<!-- -->
+<!-- each user page can only be seen when a user logs in-->
 <?php
 	include "database.php";
 	session_start();
@@ -7,6 +7,7 @@
 		echo "<script>window.open('user_login.php','_self')</script>";
 	}
 ?>
+<!--html begins --> 
 <!Doctype html>
 <html>
 <head>
@@ -23,6 +24,7 @@
 <body>
 <div class="container">
 <div class="extra">
+<!-- nav bar --> 
 <ul>
   <li><a href="user_home.php">Home</a></li>
   <li><a href="search_bank.php">Search Banks</a></li>
@@ -35,24 +37,26 @@
 <div id="content">
       <h3 id="heading">Change Password</h3>
 		<div id="center">
+    <!-- using php to check old password matches the current password and then update with new password if successful --> 
 	<?php
 	if(isset($_POST["submit"]))
 		{
-			$sql="SELECT * FROM student WHERE PASS='{$_POST["opass"]}' and ID=".$_SESSION["ID"];
+			$sql="SELECT * FROM user WHERE PASS='{$_POST["opass"]}' and ID=".$_SESSION["ID"];
 			$res=$db->query($sql);
 			if($res->num_rows>0)
 			{
-				$s="update student set PASS='{$_POST["npass"]}' WHERE ID=".$_SESSION["ID"];
+				$s="update user set PASS='{$_POST["npass"]}' WHERE ID=".$_SESSION["ID"];
 				$db->query($s);
 				echo "<p class='success'>Password Changed</p>";
 			}
-			else
+			else  
 			{
-				echo "<p class='error'>Invalid Password</p>";
+				echo "<p class='error'>Invalid Password</p>"; //error message
 			}
 
 		}
 	?>
+            <!--form for user input --> 
 		<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 			<br>
 			<div class="input-group">

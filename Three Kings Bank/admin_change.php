@@ -1,4 +1,4 @@
-<!-- -->
+<!-- only admin logged in can view this page-->
 <?php
 	include "database.php";
 	session_start();
@@ -7,7 +7,7 @@
 		echo "<script>window.open('admin_login.php','_self')</script>";
 	}
 ?>
-
+<!-- begin html-->
 <!Doctype html>
 <html>
 <head>
@@ -28,7 +28,7 @@
 <body>
 <div class="container">
 <div class="extra">
-<ul>
+<ul><!--admin nav bar -->
   <li><a href="admin_home.php">Home</a></li>
   <li><a href="admin_view_bank.php">View Banks</a></li>
   <li><a href="admin_add_bank.php">Add Bank</a></li>
@@ -41,6 +41,7 @@
 <div id="content">
       <h3 id="heading">Change Password</h3>
 		<div id="center">
+            <!-- php to check old password matches current password and then set the new password -->
 	<?php
 	if(isset($_POST["submit"]))
 		{
@@ -54,11 +55,12 @@
 			}
 			else
 			{
-				echo "<p class='error'>Invalid Password</p>";
+				echo "<p class='error'>Invalid Password</p>"; // error message
 			}
 
 		}
 	?>
+            <!-- form to take in users input-->
 		<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 			<br>
 			<div class="input-group">

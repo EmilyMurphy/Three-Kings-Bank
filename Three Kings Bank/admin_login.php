@@ -1,9 +1,9 @@
-<!-- -->
+<!-- start session and connect to db-->
 <?php
 	session_start();
 	include "database.php";
 ?>
-
+<!-- begin html-->
 <!Doctype html>
 <html>
 <head>
@@ -34,6 +34,7 @@
 <div id="wrapper">
     <div id="content">
        <h3 id="heading">Admin Login Here </h3>
+        <!-- php to to check the username and password are correct and set current session to that admin -->
 	    <?php
 	if(isset($_POST["submit"]))
 		{
@@ -44,14 +45,15 @@
 				$row=$res->fetch_assoc(); 
 				$_SESSION["AID"]=$row["AID"];
 				$_SESSION["ANAME"]=$row["ANAME"];
-				echo "<script>window.open('admin_home.php','_self')</script>";
+				echo "<script>window.open('admin_home.php','_self')</script>"; // open admin home page if successful
 			}
 			else
 			{
-				echo"<p class='error'>Invalid User name or Password</p>";
+				echo"<p class='error'>Invalid User name or Password</p>"; // error message
 			}
 		}
 ?>
+        <!-- form for user input -->
 		<div id="center">
 		  <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 			<br>

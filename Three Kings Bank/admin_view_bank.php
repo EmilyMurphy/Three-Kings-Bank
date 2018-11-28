@@ -1,4 +1,4 @@
-<!-- -->
+<!-- only admin logged in can view this page-->
 <?php
 	include "database.php";
 	include "function.php";
@@ -8,7 +8,7 @@
 		echo "<script>window.open('admin_login.php','_self')</script>";
 	}
 ?>
-
+<!-- begin html -->
 <!Doctype html>
 <html>
 <head>
@@ -27,6 +27,7 @@
 <div class="container">
 <div class="extra">
 <ul>
+    <!-- admin nav bar -->
   <li><a href="admin_home.php">Home</a></li>
   <li><a id="active" href="admin_view_bank.php">View Banks</a></li>
   <li><a href="admin_add_bank.php">Add Bank</a></li>
@@ -38,39 +39,40 @@
 
 <div id="content">
       <h3 id="heading">View Bank Details</h3>
+    <!--php to display all banks in the table  -->
 	<?php 
 	if(isset($_GET["mes"]))
 	{
 		echo "<p class='success'>".$_GET["mes"]."</p>";
 	}
-		$sql="SELECT * FROM bank";
+		$sql="SELECT * FROM bank"; // select all from bank table
 		$res=$db->query($sql);
 		if($res->num_rows>0)
 		{
 			echo "<table>";
-					echo "<tr>";
-						echo "<th>NO</th>";
-						echo "<th>NAME</th>";
-						echo "<th>LOCATION</th>";
+					echo "<tr>"; 
+						echo "<th>NO </th>";
+						echo "<th>NAME </th>";
+						echo "<th>LOCATION </th>";
 						echo "<th>DELETE</th>";
 					echo "</tr>";
 					$i=0;
 				while($row=$res->fetch_assoc())
 				{
 					$i++;
-					echo "<tr>";
+					echo "<tr>"; // display table 
 					echo "<td>{$i}</td>";
 					echo "<td>{$row["BNAME"]}</td>";
 					echo "&nbsp;";
 					echo "<td>{$row["ADDRESS"]}</td>";
-					echo "<td><a href='delete_bank.php?id={$row["BID"]}'>Delete</a></td>";
+					echo "<td><a href='delete_bank.php?id={$row["BID"]}'>Delete</a></td>"; // use delete bank php function if pressed
 					echo "</tr>";
 				}
 			echo "</table>";
 		}
 		else
 		{
-			echo "<p class='error'>No Bank Record Found</p>";
+			echo "<p class='error'>No Bank Record Found</p>"; // error message
 		}
 	?>
 	

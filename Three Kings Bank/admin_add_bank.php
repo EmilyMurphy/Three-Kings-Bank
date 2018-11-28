@@ -1,6 +1,6 @@
-<!-- -->
+<!-- only admin logged in can view this page-->
 <?php
-	include "database.php";
+	include "database.php"; // connect to db
 	include "function.php";
 	session_start();
 	if(!isset($_SESSION["AID"]))
@@ -8,13 +8,14 @@
 		echo "<script>window.open('admin_login.php','_self')</script>";
 	}
 ?>
-
+<!-- begin html-->
 <!Doctype html>
 <html>
 <head>
 
 <meta charset = "utf-8">
 <title> Home </title>
+    <!-- imported link and css-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/Home.css">
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
@@ -25,7 +26,7 @@
 <body>
 <div class="container">
 <div class="extra">
-<ul>
+<ul> <!-- admin nav bar -->
   <li><a href="admin_home.php">Home</a></li>
   <li><a href="admin_view_bank.php">View Banks</a></li>
   <li><a id="active" href="admin_add_bank.php">Add Bank</a></li>
@@ -38,6 +39,7 @@
 <div id="content">
       <h3 id="heading">Upload Bank Details</h3>
 		<div id="center">
+            <!-- php to add new bank details-->
 		<?php
 	if(isset($_POST["submit"]))
 		{
@@ -54,11 +56,12 @@
                     }
                     else
                     {
-                        echo "<p class='success'>Adding Bank Failed.</p>";
+                        echo "<p class='success'>Adding Bank Failed.</p>"; // error message
                     }
 	
 		}
 ?>
+            <!--form to take in users input -->
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" >
 		<br>
 		<div class="input-group">

@@ -8,7 +8,7 @@
 		echo "<script>window.open('admin_login.php','_self')</script>";
 	}
 ?>
-
+<!-- begin html -->
 <!Doctype html>
 <html>
 <head>
@@ -30,6 +30,7 @@
 <div class="container">
 <div class="extra">
 <ul>
+    <!-- admin nav bar  -->
   <li><a id="active" href="admin_home.php">Home</a></li>
   <li><a href="admin_view_bank.php">View Banks</a></li>
   <li><a href="admin_add_bank.php">Add Bank</a></li>
@@ -40,8 +41,10 @@
 <div id="set">
 
 <div id="content">
+    <!-- welcome current admin logged in using php session -->
       <h3 id="heading"> Welcome Back <?php echo $_SESSION["ANAME"]; ?></h3>
 		<ul id="count" style="color: white">
+            <!-- display current count of all users and banks in the system using php -->
 			<li>Total Users Registered  : <?php echo countRecord("SELECT * from user",$db); ?></li>
             <br>
 			<li>Total Banks    : <?php echo countRecord("SELECT * from bank",$db); ?></li>

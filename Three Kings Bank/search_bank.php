@@ -1,4 +1,4 @@
-<!-- -->
+<!-- each user page can only be seen when a user logs in-->
 <?php
 	include "database.php";
 	session_start();
@@ -7,7 +7,7 @@ if(!isset($_SESSION["ID"]))
 	echo "<script>window.open('user_login.php','_self')</script>";
 }
 ?>
-
+<!-- html begins -->
 <!Doctype html>
 <html>
 <head>
@@ -29,6 +29,7 @@ if(!isset($_SESSION["ID"]))
 <div class="container">
 <div class="extra">
 <ul>
+    <!-- nav bar-->
   <li><a href="user_home.php">Home</a></li>
   <li><a id="active" href="search_bank.php">Search Banks</a></li>
   <li><a href="logout.php">Logout</a></li>
@@ -40,6 +41,7 @@ if(!isset($_SESSION["ID"]))
 <div id="content">
       <h3 id="heading">Search Bank</h3>
 		<div id="center">
+            <!-- form to take in user search words-->
 			  <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 				<br>
 				<div class="input-group">
@@ -50,6 +52,7 @@ if(!isset($_SESSION["ID"]))
 				</div>
 			  </form>
 		</div>
+    <!-- php to search the table bank from data base to check if both the bank name or location is like the users input -->
 		<?php 
 		if(isset($_POST["submit"]))
 		{
@@ -59,15 +62,15 @@ if(!isset($_SESSION["ID"]))
 			{
 				echo "<table>";
 						echo "<tr>";
-							echo "<th>NO</th>";
-							echo "<th>NAME</th>";
-							echo "<th>LOCATION</th>";
+							echo "<th>NO </th>";
+							echo "<th>NAME </th>";
+							echo "<th>LOCATION </th>";
 							
 						echo "</tr>";
 						$i=0;
 					while($row=$res->fetch_assoc())
 					{
-						$i++;
+						$i++; // for each search result found iterate $i 
 						echo "<tr>";
 						echo "<td>{$i}</td>";
 						echo "<td>{$row["BNAME"]}</td>";
@@ -79,7 +82,7 @@ if(!isset($_SESSION["ID"]))
 			}
 			else
 			{
-				echo "<p class='error'>No Bank Record Found</p>";
+				echo "<p class='error'>No Bank Record Found</p>"; // error message
 			}
 		}
 	?>

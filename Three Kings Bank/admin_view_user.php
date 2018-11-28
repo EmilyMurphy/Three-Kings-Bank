@@ -1,4 +1,4 @@
-<!-- -->
+<!-- only admin logged in can view this page-->
 <?php
 	include "database.php";
 	include "function.php";
@@ -8,7 +8,7 @@
 		echo "<script>window.open('admin_login.php','_self')</script>";
 	}
 ?>
-
+<!-- begin html -->
 <!Doctype html>
 <html>
 <head>
@@ -29,7 +29,7 @@
 <body>
 <div class="container">
 <div class="extra">
-<ul>
+<ul> <!-- admin nav bar -->
   <li><a href="admin_home.php">Home</a></li>
   <li><a href="admin_view_bank.php">View Banks</a></li>
   <li><a href="admin_add_bank.php">Add Bank</a></li>
@@ -41,6 +41,7 @@
 
 <div id="content">
       <h3 id="heading">View Users Details</h3>
+    <!--php to display all users in the table  -->
 	<?php 
 		$sql="SELECT * FROM user";
 		$res=$db->query($sql);
@@ -52,6 +53,7 @@
 						echo "<th>NAME</th>";
 						echo "<th>EMAIL</th>";
                         echo "<th>VIEW</th>";
+                        echo "<th>DELETE</th>";
 					echo "</tr>";
 					$i=0;
 				while($row=$res->fetch_assoc())
@@ -61,14 +63,15 @@
 					echo "<td>{$i}</td>";
 					echo "<td>{$row["NAME"]}</td>";
 					echo "<td>{$row["MAIL"]}</td>";
-                    echo "<td><a href='{$row["FILE"]}' target='_blank'>View</a></td>";
+                    echo "<td><a href='{$row["FILE"]}' target='_blank'>View</a></td>"; // view image file
+                    echo "<td><a href='delete_user.php?id={$row["ID"]}'>Delete</a></td>";
 					echo "</tr>";
 				}
 			echo "</table>";
 		}
 		else
 		{
-			echo "<p class='error'>No User Record Found</p>";
+			echo "<p class='error'>No User Record Found</p>"; // error message
 		}
 	?>
 	

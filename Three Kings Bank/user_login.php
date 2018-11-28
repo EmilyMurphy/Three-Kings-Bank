@@ -1,9 +1,9 @@
-<!-- -->
+<!-- start session-->
 <?php
 	session_start();
 	include "database.php";
 ?>
-
+<!-- html begins-->
 <!Doctype html>
 <html>
 <head>
@@ -33,6 +33,7 @@
 <div id="wrapper">
     <div id="content">
       <h3 id="heading">User Login Here </h3>
+        <!-- php to check username and password then set current session to that user and open user home-->
 	    <?php
 	if(isset($_POST["submit"]))
 		{
@@ -43,15 +44,16 @@
 				$row=$res->fetch_assoc(); 
 				$_SESSION["ID"]=$row["ID"];
 				$_SESSION["NAME"]=$row["NAME"];
-				echo "<script>window.open('user_home.php','_self')</script>";
+				echo "<script>window.open('user_home.php','_self')</script>"; // once successful login then opens user home page
 			}
 			else
 			{
-				echo"<p class='error'>Invalid User name or Password</p>";
+				echo"<p class='error'>Invalid User name or Password</p>"; // error message
 			}
 		}
 ?>
 		<div id="center">
+            <!-- form to take in username and password-->
 			  <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 				<br>
 				<div class="input-group">

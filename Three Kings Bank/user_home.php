@@ -1,13 +1,13 @@
 <!-- each user page can only be seen when a user logs in -->
 <?php
-	include "database.php";
+	include "database.php"; // connects to the database bank.sql
 	session_start();
-if(!isset($_SESSION["ID"]))
+if(!isset($_SESSION["ID"])) //ensure only a user logged in can see this page
 {
 	echo "<script>window.open('user_login.php','_self')</script>";
 }
 ?>
-
+<!--html begins --> 
 <!Doctype html>
 <html>
 <head>
@@ -18,6 +18,7 @@ if(!isset($_SESSION["ID"]))
 </script>
 <meta charset = "utf-8">
 <title> Home </title>
+    <!-- imported and local style sheets-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/Home.css">
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
@@ -26,8 +27,10 @@ if(!isset($_SESSION["ID"]))
 <img src = "images/TKB bg.png" width="100%" height="10%" alt="background"  >
 </header>
 <body>
+    <!-- the body is in a container so everything inside will not extend the full width of the page -->
 <div class="container">
 <div class="extra">
+    <!-- user nav bar -->
 <ul>
   <li><a id="active" href="user_home.php">Home</a></li>
   <li><a href="search_bank.php">Search Banks</a></li>
@@ -35,7 +38,7 @@ if(!isset($_SESSION["ID"]))
   <li><a href="user_change.php">Change Password</a></li>
 </ul>
 <div id="set">
-
+<!-- welcome current user logged in using php session -->
 <div id="content">
       <h3 id="heading">Welcome to the Three Kings Bank homepage <?php echo $_SESSION["NAME"]; ?></h3>
 	  <div id="original2">

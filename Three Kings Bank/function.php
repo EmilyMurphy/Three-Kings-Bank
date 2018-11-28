@@ -1,4 +1,4 @@
-<!-- -->
+<!-- count records function-->
 <?php
 	include "database.php";
 	function countRecord($sql,$db)
