@@ -1,3 +1,4 @@
+<!-- -->
 <?php
 	$db=new mysqli("localhost","root","","bank");
 	if(!$db)

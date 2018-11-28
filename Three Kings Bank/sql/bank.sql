@@ -33,7 +33,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`AID`, `ANAME`, `APASS`) VALUES
-(1, 'admin', 'admin');
+(1, 'admin', 'admin'),
+(2, 'emily', 'admin'),
+(3, 'sean', 'admin');
 
 -- --------------------------------------------------------
 
@@ -53,8 +55,36 @@ CREATE TABLE IF NOT EXISTS `bank` (
 --
 
 INSERT INTO `bank` (`BID`, `BNAME`, `ADDRESS`) VALUES
-(1, 'AIB', 'DUBLIN 12'),
-(2, 'ULSTER', 'DUBLIN 4');
+(1, ' AIB ', ' Dublin 12, Ireland '),
+(2, ' AIB ', ' Dublin 3, Ireland '),
+(3, ' AIB ', ' Dublin 6, Ireland '),
+(4, ' AIB ', ' Cork, Ireland '),
+(5, ' AIB ', ' Mayo, Ireland '),
+(6, ' AIB ', ' Limerick, Ireland '),
+(7, ' AIB ', ' Tipperary, Ireland '),
+(8, ' Ulster Bank ', ' Dublin 4, Ireland '),
+(9, ' Ulster Bank ', ' Dublin 13, Ireland '),
+(10, ' Ulster Bank ', ' Dublin 1, Ireland '),
+(11, ' Ulster Bank ', ' Wicklow, Ireland '),
+(12, ' Ulster Bank ', ' Wexford, Ireland '),
+(13, ' KBC ', ' Cork, Ireland '),
+(14, ' KBC ', ' Galway, Ireland '),
+(15, ' KBC ', ' Ulster, Ireland '),
+(16, ' BNP Paribas ', ' Barcelona, Spain '),
+(17, ' BNP Paribas ', ' Madrid, Spain '),
+(18, ' BNP Paribas ', ' Alicante, Spain '),
+(19, ' BNP Paribas ', ' Rome, Italy '),
+(20, ' BNP Paribas ', ' Sicily, Italy '),
+(21, ' BNP Paribas ', ' Milan, Italy '),
+(22, ' HSBC ', ' London, England '),
+(23, ' HSBC ', ' Liverpool, England '),
+(24, ' HSBC ', ' Brighton, England '),
+(25, ' Bank of America ', ' Ohio, U.S.A '), 
+(26, ' Bank of America ', ' Florida, U.S.A '), 
+(27, ' Bank of America ', ' New York, U.S.A '), 
+(28, ' Bank of America ', ' Texas, U.S.A '), 
+(29, ' Bank of America ', ' Oklahoma, U.S.A '), 
+(30, ' Bank of America ', ' California, U.S.A '); 
 
 -- --------------------------------------------------------
 
@@ -70,6 +100,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `NAME` varchar(150) NOT NULL,
   `PASS` varchar(150) NOT NULL,
   `MAIL` varchar(150) NOT NULL,
+  `FILE` varchar(150) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -77,11 +108,14 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `NAME`, `PASS`, `MAIL`) VALUES
-(1, 'ram', '1234', 'ram@gmail.com'),
-(2, 'Sara', '1234', 'sara@gmail.com'),
-(3, 'Tom', '1234', 'tom@gmail.com'),
-(4, 'Priya', '1234', 'priya@gmail.com');
+INSERT INTO `user` (`ID`, `NAME`, `PASS`, `MAIL`,`FILE`) VALUES
+
+(1, 'Jack', '1234', 'JJ@gmail.com', 'upload/bey.jpeg'),
+(2, 'Phil', '1234', 'Philbusiness@gmail.com', 'upload/bey.jpeg'),
+(3, 'Andrew', '1234', 'Andrew23@gmail.com', 'upload/bey.jpeg'),
+(4, 'Kate', '1234', 'KT@gmail.com', 'upload/bey.jpeg'),
+(5, 'Michael', '1234', 'micheal1@gmail.com', 'upload/bey.jpeg'),
+(6, 'em', 'em', 'emily@gmail.com', 'upload/bey.jpeg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

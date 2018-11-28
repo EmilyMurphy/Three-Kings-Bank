@@ -14,6 +14,9 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+</script>
 <meta charset = "utf-8">
 <title> Home </title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
@@ -28,22 +31,18 @@
 <div class="extra">
 <ul>
   <li><a href="admin_home.php">Home</a></li>
-  <li><a id="active" href="admin_view_bank.php">View Banks</a></li>
+  <li><a href="admin_view_bank.php">View Banks</a></li>
   <li><a href="admin_add_bank.php">Add Bank</a></li>
-    <li><a href="admin_view_user.php">View Users</a></li>
+  <li><a id="active" href="admin_view_user.php">View Users</a></li>
   <li><a href="logout.php">Logout</a></li>
   <li><a href="admin_change.php">Change Password</a></li>
 </ul>
 <div id="set">
 
 <div id="content">
-      <h3 id="heading">View Bank Details</h3>
+      <h3 id="heading">View Users Details</h3>
 	<?php 
-	if(isset($_GET["mes"]))
-	{
-		echo "<p class='success'>".$_GET["mes"]."</p>";
-	}
-		$sql="SELECT * FROM bank";
+		$sql="SELECT * FROM user";
 		$res=$db->query($sql);
 		if($res->num_rows>0)
 		{
@@ -51,8 +50,8 @@
 					echo "<tr>";
 						echo "<th>NO</th>";
 						echo "<th>NAME</th>";
-						echo "<th>LOCATION</th>";
-						echo "<th>DELETE</th>";
+						echo "<th>EMAIL</th>";
+                        echo "<th>VIEW</th>";
 					echo "</tr>";
 					$i=0;
 				while($row=$res->fetch_assoc())
@@ -60,22 +59,22 @@
 					$i++;
 					echo "<tr>";
 					echo "<td>{$i}</td>";
-					echo "<td>{$row["BNAME"]}</td>";
-					echo "&nbsp;";
-					echo "<td>{$row["ADDRESS"]}</td>";
-					echo "<td><a href='delete_bank.php?id={$row["BID"]}'>Delete</a></td>";
+					echo "<td>{$row["NAME"]}</td>";
+					echo "<td>{$row["MAIL"]}</td>";
+                    echo "<td><a href='{$row["FILE"]}' target='_blank'>View</a></td>";
 					echo "</tr>";
 				}
 			echo "</table>";
 		}
 		else
 		{
-			echo "<p class='error'>No Bank Record Found</p>";
+			echo "<p class='error'>No User Record Found</p>";
 		}
 	?>
 	
     </div>
 </div>
+</body>
 </div>
 </div>
 <footer id="footer">
@@ -89,6 +88,3 @@
 </footer>
 </body>
 </html>
-<script>
-
-</script>

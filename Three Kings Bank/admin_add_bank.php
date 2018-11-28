@@ -1,3 +1,4 @@
+<!-- -->
 <?php
 	include "database.php";
 	include "function.php";
@@ -14,27 +15,28 @@
 
 <meta charset = "utf-8">
 <title> Home </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/Home.css">
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
 </head>
 <header>
-<a href="admin_home.php">
-<img src = "images/logo.png" class="image2" width="10%" height="20%" align = left>
-</a>
 <img src = "images/TKB bg.png" width="100%" height="10%" alt="background"  >
 </header>
 <body>
+<div class="container">
+<div class="extra">
 <ul>
-  <li><a id="active" href="admin_home.php">Home</a></li>
+  <li><a href="admin_home.php">Home</a></li>
   <li><a href="admin_view_bank.php">View Banks</a></li>
-  <li><a href="admin_add_bank.php">Add Bank</a></li>
+  <li><a id="active" href="admin_add_bank.php">Add Bank</a></li>
+    <li><a href="admin_view_user.php">View Users</a></li>
   <li><a href="logout.php">Logout</a></li>
   <li><a href="admin_change.php">Change Password</a></li>
 </ul>
 <div id="set">
 
 <div id="content">
-      <h3 id="heading">Upload Bank Details.</h3>
+      <h3 id="heading">Upload Bank Details</h3>
 		<div id="center">
 		<?php
 	if(isset($_POST["submit"]))
@@ -58,20 +60,33 @@
 		}
 ?>
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" >
-		<label>Bank Name</label>
-		<input type="text" name="bname" required>
-		<label>Location </label>
-		<textarea name="addr" required></textarea>
-		
-		<button type="submit" name="submit">Save Details</button>
+		<br>
+		<div class="input-group">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+		<input type="text" name="bname" placeholder=" Bank Name " required>
+		</div>
+		<br>
+		<div class="input-group">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+		<input type="text" name="addr" placeholder=" Location " required></textarea>
+		</div>
+		<br>
+		</div>
+		<button type="submit" name="submit" class="btn btn-secondary" role="button">Save Details</button>
 	  </form>
 		</div>
     </div>
 </div>
-</body>
-<footer>
+</div>
+</div>
+<footer id="footer">
 <hr>
-<p id="fix">If you would like to contact TKB feel free to email all queries to tkbcontact@gmail.com<a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc"> or click here</a></p>
+<div id="fix">
+<p>If you would like to contact TKB feel free to email all queries to tkbcontact@gmail.com
+<a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc" class="btn btn-info" role="button"> or click here</a>
+</div>
+</p>
 <hr>
 </footer>
+</body>
 </html>

@@ -1,0 +1,2 @@
+<p> thats tkbcontact@gmail.com if you have any queries or the button that is right below or at the bottom of the page </p>
+<a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc" class="btn btn-info" role="button">Click this button</a>

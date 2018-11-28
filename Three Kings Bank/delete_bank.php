@@ -1,3 +1,4 @@
+<!-- -->
 <?php
 	include "database.php";
 	$sql="DELETE from bank where BID=".$_GET["id"];

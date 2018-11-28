@@ -9,6 +9,15 @@ ul {
     background-color: #333;
 	border: 1px solid grey;
 	box-shadow: 4px 2px grey;
+	text-decoration: none;
+}
+*{
+	    margin:0;
+		padding:0;
+}
+
+header{
+	height:100%;
 }
 
 h1 {
@@ -54,9 +63,13 @@ li a:hover:not(#active) {
     width: 50%;
 }
 
+html {
+    height:100%;
+}
   
-  body {
-  background: grey url("../images/Background.png") no-repeat right top;
+ body {
+	background-image: url("Background.png");
+    background-repeat: repeat-x;
 }
 
 .image2 {
@@ -82,8 +95,30 @@ li a:hover:not(#active) {
 
 #fix {
 	text-align: center;
-	color : white;
+	color : darkslategrey;	
 }
+
+#container(
+	min-height: 100%;
+}
+
+#extra{
+	overflow:auto;
+	padding-bottom: 100px;
+}
+
+
+#footer{
+	position:relative;
+	height:100px;
+	margin-top:-100px;
+	clear:both;
+    
+}
+
+#logo{	
+}
+
 
 #center{height:auto;width:300px;margin-left:100px;}
 label,input,button,select{display:block;margin-top:5px;margin-bottom:5px;}

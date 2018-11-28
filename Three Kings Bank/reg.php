@@ -1,5 +1,7 @@
+<!-- -->
 <?php
 	include "database.php";
+	include "function.php";
 ?>
 
 <!Doctype html>
@@ -12,66 +14,119 @@
 </script>
 <meta charset = "utf-8">
 <title> Home </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/Home.css">
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
 </head>
 <header>
-<a href="index.php">
-<img src = "images/logo.png" class="image2" width="10%" height="20%" align = left>
-</a>
 <img src = "images/TKB bg.png" width="100%" height="10%" alt="background"  >
 </header>
 <body>
+<div class="container">
+<div class="extra">
 <ul>
-  <li><a id="active" href="index.php">Home</a></li>
+  <li><a href="index.php">Home</a></li>
   <li><a href="admin_login.php">Admin Login</a></li>
   <li><a href="user_login.php">User Login</a></li>
-  <li><a href="reg.php">User Registration</a></li>
+  <li><a id="active" href="reg.php">User Registration</a></li>
 </ul>
 <div id="set">
 
 <div id="content">
       <h3 id="heading">Register Here</h3>
 	    <?php
-	if(isset($_POST["submit"]))
-		{
-			$name=$_POST["name"];
-			$pass=$_POST["pass"];
-			$mail=$_POST["mail"];
-		
-		 $sql="INSERT INTO user(NAME,PASS,MAIL)
-		 VALUES ('{$name}','{$pass}','{$mail}')";
-					
-			 if($db->query($sql))
-			{
-				echo "<p class='success'>User Registration Success.</p>";
-			}
-			else
-			{
-				echo "<p class='success'>Registration Failed.</p>";
-			}
+    if(isset($_POST["submit"])){
+        
+            $name=$_POST["uname"];
+            $pass=$_POST["pass"];
+            $mail=$_POST["mail"];
+$target_dir = "upload/";
+$target_file = $target_dir . basename($_FILES["efile"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["efile"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["efile"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["efile"]["tmp_name"], $target_file)) {
+             $sql="INSERT INTO user(NAME,PASS,MAIL,FILE)
+		      VALUES ('{$name}','{$pass}','{$mail}','{$target_file}')";
+            $db->query($sql);
+        echo "The file ". basename( $_FILES["efile"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+   }
 
-		}
+
+		
 ?>
 	<div id="center">
-      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 	
-		<label>Name</label>
-		<input type="text" name="name" required>
-			<label>Password</label>
-		<input type="password" name="pass" required>
-			<label>E - Mail</label>
-		<input type="email" name="mail" required>
-			
-		<button type="submit" name="submit">Save Details</button>
+		<br>
+		<div class="input-group">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		<input type="text" name="uname" placeholder=" username " required>
+		</div>
+		<br>
+		<div class="input-group">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+		<input type="password" name="pass" placeholder=" password " required>
+		</div>
+		<br>
+		<div class="input-group">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+		<input type="email" name="mail" placeholder=" email " required>
+		</div>
+		<br>
+        <label>Upload File</label>
+		<input type="file" name="efile" id="efile" required>
+        <br>
+		<button type="submit" name="submit" class="btn btn-secondary" role="button">Save Details</button>
 	  </form>
     </div>
     </div>
 </div>
-</body>
-<footer>
+</div>
+</div>
+<footer id="footer">
 <hr>
-<p id="fix">If you would like to contact TKB feel free to email all queries to tkbcontact@gmail.com<a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc"> or click here</a></p>
+<div id="fix">
+<p>If you would like to contact TKB feel free to email all queries to tkbcontact@gmail.com
+<a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc" class="btn btn-info" role="button"> or click here</a>
+</div>
+</p>
 <hr>
 </footer>
+</body>
 </html>
