@@ -66,7 +66,8 @@
 				<input type="password" name="pass" placeholder=" password " required>
 				</div>
 				<br>
-				<button type="submit" name="submit" class="btn btn-secondary" role="button">Login Now</button>
+				<!-- jquery linked -->
+				<button id= "loginU" type="submit" name="submit" class="btn btn-secondary" role="button">Login Now</button>
 			  </form>
 		</div>
     </div>
@@ -78,9 +79,27 @@
 <div id="fix">
 <p>If you would like to contact TKB feel free to email all queries to tkbcontact@gmail.com
 <a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc" class="btn btn-info" role="button"> or click here</a>
+<!-- circle for animation -->
+<div id="circle" style="background:#66d9ff;height:100px;width:100px;position:absolute;bottom:50%;left: 50%;border-radius: 50px;padding 20px;"></div>
 </div>
 </p>
 <hr>
 </footer>
+<script> 
+<!-- jquery for animation -->
+$(document).ready(function(){
+    $("#loginU").click(function(){
+        var div = $("#circle");
+        div.animate({opacity: '0.2'}, "slow");
+        div.animate({opacity: '0.4'}, "slow");
+        div.animate({opacity: '0.6'}, "slow");
+        div.animate({opacity: '0.8'}, "slow");
+		div.animate({opacity: '1'}, "slow");
+		div.queue(function() {
+      div.css("background-color", "red");
+    });
+    });
+});
+</script> 
 </body>
 </html>

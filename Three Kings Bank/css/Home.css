@@ -1,6 +1,6 @@
-h1 {
-	font-family : Palatino;
-}
+/* css started */
+
+/* created for the nav bar (unordered list) */
 ul {
     list-style-type: none;
     margin: 0;
@@ -11,14 +11,18 @@ ul {
 	box-shadow: 4px 2px grey;
 	text-decoration: none;
 }
+
 *{
 	    margin:0;
 		padding:0;
 }
 
+
 header{
 	height:100%;
 }
+
+/* fonts */
 
 h1 {
 	font-family: Georgia, serif;
@@ -40,6 +44,8 @@ li {
 	float:right
 }
 
+/* for nav bar */
+
 li a {
     display: block;
     color: white;
@@ -48,13 +54,18 @@ li a {
     text-decoration: none;
 }
 
+/* nave bar change background colour on hover */
+
 li a:hover:not(#active) {
     background-color: #111;
 }
 
+/* nav bar make the background colour of the page that user is on be different */
 #active {
     background-color: #bcae14;
 }
+
+/* puts anything to the center of the screen */
 
 .center {
     display: block;
@@ -67,10 +78,6 @@ html {
     height:100%;
 }
   
- body {
-	background-image: url("Background.png");
-    background-repeat: repeat-x;
-}
 
 .image2 {
   position: absolute;
@@ -78,6 +85,7 @@ html {
   left: 30px;
 }
 
+/* puts content in a black bordered section */
 #set {
 	background-color: white;
     width: 90%;
@@ -87,6 +95,8 @@ html {
 	padding-left: 50px;
 	padding-right: 50px;
 }
+
+/* centers text */
 
 #centertext{
 	text-align: center;
@@ -116,12 +126,11 @@ html {
     
 }
 
-#logo{	
-}
 
 
 #center{height:auto;width:300px;margin-left:100px;}
 label,input,button,select{display:block;margin-top:5px;margin-bottom:5px;}
 input,select,textarea{width:100%;}
 
+/* text is put to the left  */
 div#content p{line-height:1.4;text-align:justify;}

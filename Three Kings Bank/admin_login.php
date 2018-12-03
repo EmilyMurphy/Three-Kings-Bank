@@ -7,6 +7,7 @@
 <!Doctype html>
 <html>
 <head>
+<!-- bootstrap and jquery imported-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -14,6 +15,7 @@
 </script>
 <meta charset = "utf-8">
 <title> Login </title>
+<!-- bootstrap css imported-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/Home.css">
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
@@ -67,7 +69,7 @@
 			<input type="password" name="apass" placeholder=" password " required>
 			</div>
 			<br>	
-			<button type="submit" name="submit" class="btn btn-secondary" role="button">Login Now</button>
+			<button id= "loginU" type="submit" name="submit" class="btn btn-secondary" role="button">Login Now</button>
 		  </form>
 		</div>
     </div>
@@ -79,9 +81,27 @@
 <div id="fix">
 <p>If you would like to contact TKB feel free to email all queries to tkbcontact@gmail.com
 <a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc" class="btn btn-info" role="button"> or click here</a>
+<!-- circle for animation -->
+<div id="circle" style="background:#66d9ff;height:100px;width:100px;position:absolute;bottom:50%;left: 50%;border-radius: 50px;padding 20px;"></div>
 </p>
 </div>
 <hr>
 </footer>
+<script> 
+<!-- jquery for animation -->
+$(document).ready(function(){
+    $("#loginU").click(function(){
+        var div = $("#circle");
+        div.animate({opacity: '0.2'}, "slow");
+        div.animate({opacity: '0.4'}, "slow");
+        div.animate({opacity: '0.6'}, "slow");
+        div.animate({opacity: '0.8'}, "slow");
+		div.animate({opacity: '1'}, "slow");
+		div.queue(function() {
+      div.css("background-color", "red");
+    });
+    });
+});
+</script> 
 </body>
 </html>

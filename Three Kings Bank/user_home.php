@@ -24,7 +24,7 @@ if(!isset($_SESSION["ID"])) //ensure only a user logged in can see this page
 <link rel="icon" href="images/logo.png" width="50" height="50" align = left>
 </head>
 <header>
-<img src = "images/TKB bg.png" width="100%" height="10%" alt="background"  >
+<img src = "images/TKB bg.png" width="100%" height="10%" alt="background" >
 </header>
 <body>
     <!-- the body is in a container so everything inside will not extend the full width of the page -->
@@ -44,8 +44,7 @@ if(!isset($_SESSION["ID"])) //ensure only a user logged in can see this page
 	  <div id="original2">
 	  <p id="change2"> Please dont hesitate to contact us by email at tkbcontact@gmail.com if you have any queries</p>
 	  </div>
-	
-    </div>
+</div>
 </div>
 </div>
 </div>
@@ -65,7 +64,6 @@ $(document).ready(function(){
     $("#change2").click(function(){
         $("#original2").load("ajax2.txt");
     });
-});
 
 </script>
 </html>

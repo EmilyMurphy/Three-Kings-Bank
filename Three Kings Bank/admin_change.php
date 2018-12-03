@@ -11,6 +11,7 @@
 <!Doctype html>
 <html>
 <head>
+<!-- bootstrap and jquery imported-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -33,6 +34,7 @@
   <li><a href="admin_view_bank.php">View Banks</a></li>
   <li><a href="admin_add_bank.php">Add Bank</a></li>
     <li><a href="admin_view_user.php">View Users</a></li>
+	<!-- DRY principle used !-->
   <li><a href="logout.php">Logout</a></li>
   <li><a id="active" href="admin_change.php">Change Password</a></li>
 </ul>

@@ -36,17 +36,17 @@
 <div id="content">
       <h3 id="heading">Register Here</h3>
     <!-- php to register new user and upload an image file -->
+	
 	    <?php
     if(isset($_POST["submit"])){
         
             $name=$_POST["uname"];
             $pass=$_POST["pass"];
             $mail=$_POST["mail"];
-            $target_dir = "upload/";
-            $target_file = $target_dir . basename($_FILES["efile"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        
+$target_dir = "upload/";
+$target_file = $target_dir . basename($_FILES["efile"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["efile"]["tmp_name"]);
@@ -73,10 +73,10 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file and insert
+// if everything is ok, try to upload file
 } else {
-    if (move_uploaded_file($_FILES["efile"]["tmp_name"], $target_file)) { // insert into user if no errors
-             $sql="INSERT INTO user(NAME,PASS,MAIL,FILE) 
+    if (move_uploaded_file($_FILES["efile"]["tmp_name"], $target_file)) {
+             $sql="INSERT INTO user(NAME,PASS,MAIL,FILE)
 		      VALUES ('{$name}','{$pass}','{$mail}','{$target_file}')";
             $db->query($sql);
         echo "The file ". basename( $_FILES["efile"]["name"]). " has been uploaded.";
@@ -89,6 +89,7 @@ if ($uploadOk == 0) {
 
 		
 ?>
+
     <!-- form to take in user parameters-->
 	<div id="center">
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -112,7 +113,8 @@ if ($uploadOk == 0) {
         <label>Upload File</label>
 		<input type="file" name="efile" id="efile" required>
         <br>
-		<button type="submit" name="submit" class="btn btn-secondary" role="button">Save Details</button>
+		<!-- jquery linked -->
+		<button id= "reg" type="submit" name="submit" class="btn btn-secondary" role="button">Save Details</button>
 	  </form>
     </div>
     </div>
@@ -124,9 +126,27 @@ if ($uploadOk == 0) {
 <div id="fix">
 <p>If you would like to contact TKB feel free to email all queries to tkbcontact@gmail.com
 <a href="mailto:tkbcontact@gmail.com" style="text-decoration:none" id="abc" class="btn btn-info" role="button"> or click here</a>
+<!-- circle for animation -->
+<div id="circle" style="background:#66d9ff;height:100px;width:100px;position:absolute;bottom:45%;left: 50%;border-radius: 50px;padding 20px;"></div>
 </div>
 </p>
 <hr>
 </footer>
+<script> 
+<!-- jquery for animation -->
+$(document).ready(function(){
+    $("#reg").click(function(){
+        var div = $("#circle");
+        div.animate({opacity: '0.2'}, "slow");
+        div.animate({opacity: '0.4'}, "slow");
+        div.animate({opacity: '0.6'}, "slow");
+        div.animate({opacity: '0.8'}, "slow");
+		div.animate({opacity: '1'}, "slow");
+		div.queue(function() {
+      div.css("background-color", "red");
+    });
+    });
+});
+</script> 
 </body>
 </html>
